@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { Link, useNavigate } from 'react-router-dom';
 import useDataFetching from '../hooks/useDataFetching';
 import NavBar from '../components/NavBar/NavBar';
+import MainNavBar from '../components/NavBar/MainNavBar';
 
 const ListWrapper = styled.div`
   display: flex;
@@ -36,7 +37,7 @@ const Lists = () => {
 
   return (
     <>
-      {navigate && <NavBar title='Your Lists' />}
+      {navigate && <MainNavBar/>}
       <ListWrapper>
         {loading || error ? (
           <span>{error || 'Loading...'}</span>

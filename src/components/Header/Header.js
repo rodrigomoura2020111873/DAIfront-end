@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
 const HeaderWrapper = styled.div`
-  background-color: orange;
-  height: 100%;
+  background-color: green;
+  height: 80px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -18,7 +18,7 @@ const Title = styled.h1`
 function Header() {
   return (
     <HeaderWrapper>
-      <Title>Personal Shopping List</Title>
+      <Title>Rede de Recolha de Residuos</Title>
     </HeaderWrapper>
   );
 }
