@@ -2,8 +2,8 @@ import React from "react";
 import 'bootstrap/dist/css/bootstrap.css';
 import styled, { createGlobalStyle } from "styled-components";
 import { Route, Routes, BrowserRouter } from "react-router-dom";
+import Home from "./pages/Home"
 import Header from "./components/Header/Header";
-import Lists from "./pages/Lists";
 import ListDetail from "./pages/ListDetail";
 import ListForm from "./pages/ListForm";
 
@@ -31,7 +31,7 @@ function App() {
         <BrowserRouter>
           <Header />
           <Routes>
-            <Route path="/" element={<Lists />} />
+            <Route path="/" element={<Home />} />
             <Route path="/list/:listId/new" element={<ListForm />} />
             <Route path="/list/:listId" element={<ListDetail />} />
           </Routes>
