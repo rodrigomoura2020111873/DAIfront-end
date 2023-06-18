@@ -5,6 +5,7 @@ import { Route, Routes, BrowserRouter } from "react-router-dom";
 import Home from "./pages/Home";
 import Camioes from "./pages/Camioes";
 import Funcionarios from "./pages/Funcionario";
+import AddFuncionarios from "./pages/FuncionariosAdd";
 import Header from "./components/Header/Header";
 import ListDetail from "./pages/ListDetail";
 import ListForm from "./pages/ListForm";
@@ -36,6 +37,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/camioes" element={<Camioes />} />
             <Route path="/funcionarios" element={<Funcionarios />} />
+            <Route path="/funcionarios/add" element={<AddFuncionarios />} />
             <Route path="/list/:listId/new" element={<ListForm />} />
             <Route path="/list/:listId" element={<ListDetail />} />
           </Routes>
