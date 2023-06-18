@@ -2,7 +2,9 @@ import React from "react";
 import 'bootstrap/dist/css/bootstrap.css';
 import styled, { createGlobalStyle } from "styled-components";
 import { Route, Routes, BrowserRouter } from "react-router-dom";
-import Home from "./pages/Home"
+import Home from "./pages/Home";
+import Camioes from "./pages/Camioes";
+import Funcionarios from "./pages/Funcionario";
 import Header from "./components/Header/Header";
 import ListDetail from "./pages/ListDetail";
 import ListForm from "./pages/ListForm";
@@ -32,6 +34,8 @@ function App() {
           <Header />
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/camioes" element={<Camioes />} />
+            <Route path="/funcionarios" element={<Funcionarios />} />
             <Route path="/list/:listId/new" element={<ListForm />} />
             <Route path="/list/:listId" element={<ListDetail />} />
           </Routes>

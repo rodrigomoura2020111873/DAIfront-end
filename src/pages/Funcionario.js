@@ -27,7 +27,7 @@ const Title = styled.h3`
   flex-basis: 80%;
 `;
 
-const Home = () => {
+const Funcionarios = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [data, setData] = useState([]);
@@ -37,9 +37,9 @@ const Home = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('http://localhost:8080/api/balde');
+        const response = await fetch('http://localhost:8080/api/funcionario');
         const json = await response.json();
-        setData(json.data.baldes);
+        setData(json.data.funcionario);
         setLoading(false);
       } catch (error) {
         setError(error);
@@ -57,11 +57,10 @@ const Home = () => {
         {loading || error ? (
           <span>{error || 'Carregando...'}</span>
         ) : (
-          data.map((list) => (
-            <ListLink key={list._id} to={`list/${list._id}`}>
-              <Title>{list.conselho}</Title>
-              <Title>{list.rua}</Title>
-              <Title>{list.freguesia}</Title>
+          data.map((funcionario) => (
+            <ListLink key={funcionario._id} to={`list/${funcionario._id}`}>
+              <Title>{funcionario.nome}</Title>
+              <Title>{funcionario.funcao}</Title>
             </ListLink>
           ))
         )}
@@ -70,4 +69,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Funcionarios;

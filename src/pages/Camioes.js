@@ -27,7 +27,7 @@ const Title = styled.h3`
   flex-basis: 80%;
 `;
 
-const Home = () => {
+const Camioes = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [data, setData] = useState([]);
@@ -37,9 +37,9 @@ const Home = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('http://localhost:8080/api/balde');
+        const response = await fetch('http://localhost:8080/api/camiao');
         const json = await response.json();
-        setData(json.data.baldes);
+        setData(json.data.camiao);
         setLoading(false);
       } catch (error) {
         setError(error);
@@ -57,11 +57,11 @@ const Home = () => {
         {loading || error ? (
           <span>{error || 'Carregando...'}</span>
         ) : (
-          data.map((list) => (
-            <ListLink key={list._id} to={`list/${list._id}`}>
-              <Title>{list.conselho}</Title>
-              <Title>{list.rua}</Title>
-              <Title>{list.freguesia}</Title>
+          data.map((camiao) => (
+            <ListLink key={camiao._id} to={`list/${camiao._id}`}>
+              <Title>{camiao.matricula}</Title>
+              <Title>{camiao.marca}</Title>
+              <Title>{camiao.modelo}</Title>
             </ListLink>
           ))
         )}
@@ -70,4 +70,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Camioes;
