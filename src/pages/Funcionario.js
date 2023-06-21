@@ -46,9 +46,7 @@ const handleRemover = async (funcionarioId, navigate) => {
   }
 };
 
-const handleAlterar = (funcionarioId, navigate) => {
-  navigate(`/funcionarios/${funcionarioId}`);
-};
+
 
 const Funcionarios = () => {
   const [loading, setLoading] = useState(true);
@@ -83,12 +81,14 @@ const Funcionarios = () => {
         ) : (
           data.map((funcionario) => (
             <div key={funcionario._id}>
-            <ListLink key={funcionario._id} to={`list/${funcionario._id}`}>
+            <ListLink key={funcionario._id} to={`${funcionario._id}`}>
               <Title>{funcionario.nome}</Title>
               <Title>{funcionario.funcao}</Title>
+              <Title>
+                <button className='btn btn-danger' onClick={() => handleRemover(funcionario._id, navigate)}>Remover</button>
+              </Title>
             </ListLink>
-            <button onClick={() => handleRemover(funcionario._id, navigate)}>Remover</button>
-            <button onClick={() => handleAlterar(funcionario._id, navigate)}>Alterar</button></div>
+</div>
           ))
         )}
       </ListWrapper>
