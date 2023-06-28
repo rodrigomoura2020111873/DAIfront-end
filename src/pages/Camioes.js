@@ -41,7 +41,7 @@ const Camioes = () => {
   
       if (response.ok) {
         console.log('Camião removido com sucesso!');
-        window.location.reload();
+        navigate('/camioes');
       } else {
         console.log('Erro ao remover o Camião.');
       }

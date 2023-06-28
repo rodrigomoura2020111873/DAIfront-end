@@ -60,8 +60,10 @@ const Home = () => {
           data.map((list) => (
             <ListLink key={list._id} to={`list/${list._id}`}>
               <Title>{list.conselho}</Title>
+              <Title>{list.freguesia}</Title> 
               <Title>{list.rua}</Title>
-              <Title>{list.freguesia}</Title>
+              <Title>{list.tipo}</Title>
+              <Title>{list.percentagem_lixo}</Title>
             </ListLink>
           ))
         )}

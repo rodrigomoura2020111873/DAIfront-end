@@ -5,6 +5,7 @@ import MainNavBar from '../components/NavBar/MainNavBar';
 import FormItem from "../components/FormItem/FormItem";
 import FormSelectItem from '../components/FormItem/FormSelectItems';
 import Button from "../components/Button/Button";
+import GoBack from '../components/SecondNavBar/GoBack';
 
 
 const SubmitButton = styled(Button)`
@@ -89,6 +90,7 @@ const AddFuncionarios = () => {
   return (
     <>
       {navigate && <MainNavBar />}
+      < GoBack />
       <FormWrapper>
         <form onSubmit={handleSubmit}>
         <FormItem id="nome" label="Nome" placeholder="Insira o nome do funcionário" handleOnChange={handleNomeChange} value={nome} />
@@ -102,7 +104,7 @@ const AddFuncionarios = () => {
       />
         <FormItem id="morada" label="Morada" placeholder="Insira a morada do funcionário" handleOnChange={handleMoradaChange}  value={morada}/>
         <FormItem id="email" label="Email" placeholder="Insira o email do funcionário" handleOnChange={handleEmailChange} value={email}/>
-        <SubmitButton>Add Item</SubmitButton>
+        <SubmitButton>Adicionar Funcionário</SubmitButton>
         </form>
       </FormWrapper>
     </>

@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import MainNavBar from '../components/NavBar/MainNavBar';
 import GoBack from '../components/SecondNavBar/GoBack';
 import FormItem from "../components/FormItem/FormItem";
-import FormSelectItem from '../components/FormItem/FormSelectItems';
 import Button from "../components/Button/Button";
 
 

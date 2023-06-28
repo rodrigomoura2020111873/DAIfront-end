@@ -37,7 +37,7 @@ const handleRemover = async (funcionarioId, navigate) => {
 
     if (response.ok) {
       console.log('Funcionário removido com sucesso!');
-      window.location.reload();
+      navigate('/funcionarios');
     } else {
       console.log('Erro ao remover o funcionário.');
     }
