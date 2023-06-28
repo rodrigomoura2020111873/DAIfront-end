@@ -10,8 +10,6 @@ import ModFuncionario from "./pages/FuncionarioMod";
 import AddCamioes from "./pages/CamioesAdd";
 import ModCamioes from "./pages/CamioesMod";
 import Header from "./components/Header/Header";
-import ListDetail from "./pages/ListDetail";
-import ListForm from "./pages/ListForm";
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -44,8 +42,6 @@ function App() {
             <Route path="/funcionarios" element={<Funcionarios />} />
             <Route path="/funcionarios/add" element={<AddFuncionarios />} />
             <Route path="/funcionarios/:funcionariosId" element={<ModFuncionario/>} />
-            <Route path="/list/:listId/new" element={<ListForm />} />
-            <Route path="/list/:listId" element={<ListDetail />} />
           </Routes>
         </BrowserRouter>
       </AppWrapper>
