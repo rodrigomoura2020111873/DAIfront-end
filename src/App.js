@@ -7,6 +7,8 @@ import Camioes from "./pages/Camioes";
 import Funcionarios from "./pages/Funcionario";
 import AddFuncionarios from "./pages/FuncionariosAdd";
 import ModFuncionario from "./pages/FuncionarioMod";
+import AddCamioes from "./pages/CamioesAdd";
+import ModCamioes from "./pages/CamioesMod";
 import Header from "./components/Header/Header";
 import ListDetail from "./pages/ListDetail";
 import ListForm from "./pages/ListForm";
@@ -37,6 +39,8 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/camioes" element={<Camioes />} />
+            <Route path="/camioes/add" element={<AddCamioes />} />
+            <Route path="/camioes/:camiaoId" element={<ModCamioes/>} />
             <Route path="/funcionarios" element={<Funcionarios />} />
             <Route path="/funcionarios/add" element={<AddFuncionarios />} />
             <Route path="/funcionarios/:funcionariosId" element={<ModFuncionario/>} />
