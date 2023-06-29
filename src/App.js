@@ -10,6 +10,8 @@ import ModFuncionario from "./pages/FuncionarioMod";
 import AddCamioes from "./pages/CamioesAdd";
 import ModCamioes from "./pages/CamioesMod";
 import Header from "./components/Header/Header";
+import AddBalde from "./pages/BaldesAdd";
+import ModBaldes from "./pages/BaldesMod";
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -36,6 +38,8 @@ function App() {
           <Header />
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/baldes/add" element={<AddBalde />} />
+            <Route path="/baldes/:baldeId" element={<ModBaldes/>} />
             <Route path="/camioes" element={<Camioes />} />
             <Route path="/camioes/add" element={<AddCamioes />} />
             <Route path="/camioes/:camiaoId" element={<ModCamioes/>} />

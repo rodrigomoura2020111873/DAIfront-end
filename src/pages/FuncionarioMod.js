@@ -111,7 +111,6 @@ const ModFuncionario = () => {
           <FormSelectItem
             id="funcao"
             label="Função"
-            placeholder="Selecione uma Função"
             value={funcao}
             options={options}
             handleOnChange={handleFuncaoChange}

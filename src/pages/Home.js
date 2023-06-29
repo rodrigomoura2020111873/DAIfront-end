@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import MainNavBar from '../components/NavBar/MainNavBar';
+import SecondNavBaldes from '../components/SecondNavBar/Baldes';
 
 const ListWrapper = styled.div`
   display: flex;
@@ -32,6 +33,23 @@ const Home = () => {
   const [error, setError] = useState(null);
   const [data, setData] = useState([]);
 
+  const handleRemover = async (baldeId, navigate) => {
+    try {
+      const response = await fetch(`http://localhost:8080/api/balde/${baldeId}`, {
+        method: 'DELETE',
+      });
+  
+      if (response.ok) {
+        console.log('Balde removido com sucesso!');
+        navigate('/');
+      } else {
+        console.log('Erro ao remover o Balde.');
+      }
+    } catch (error) {
+      console.log('Erro:', error);
+    }
+  };
+
   let navigate = useNavigate();
 
   useEffect(() => {
@@ -53,17 +71,21 @@ const Home = () => {
   return (
     <>
       {navigate && <MainNavBar />}
+      < SecondNavBaldes />
       <ListWrapper>
         {loading || error ? (
           <span>{error || 'Carregando...'}</span>
         ) : (
           data.map((list) => (
-            <ListLink key={list._id} to={`list/${list._id}`}>
+            <ListLink key={list._id} to={`/baldes/${list._id}`}>
               <Title>{list.conselho}</Title>
               <Title>{list.freguesia}</Title> 
               <Title>{list.rua}</Title>
               <Title>{list.tipo}</Title>
               <Title>{list.percentagem_lixo}</Title>
+              <Title>
+                <button className='btn btn-danger' onClick={() => handleRemover(list._id, navigate)}>Remover</button>
+              </Title>
             </ListLink>
           ))
         )}
