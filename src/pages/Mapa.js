@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
 import MainNavBar from '../components/NavBar/MainNavBar';
-import { baldes } from './BaldesMod';
 
 
 const containerStyle = {
