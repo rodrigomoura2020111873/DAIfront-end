@@ -40,15 +40,6 @@ const Mapa = () => {
     <MainNavBar />
     <LoadScript googleMapsApiKey="AIzaSyAtPh6llWn2OSoWEDmS7oiTmtV5eDMLEiE">
     <GoogleMap mapContainerStyle={containerStyle} center={center} zoom={13}>
-          {baldes.map((balde) => (
-            <Marker
-              key={balde.id}
-              position={{
-                lat: balde.latitude,
-                lng: balde.longitude,
-              }}
-            />
-          ))}
         </GoogleMap>
     </LoadScript>
     </>
