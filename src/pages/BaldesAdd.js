@@ -29,7 +29,7 @@ const AddBalde = () => {
   const [coordenadaX, setCoordenadaX] = useState('');
   const [coordenadaY, setCoordenadaY] = useState('');
   const [tipo, setTipo] = useState('');
-  const [percentagem_lixo, setPercentagem_lixo] = useState(0);
+  const [percentagem_lixo] = useState(0);
 
   const handleConselhoChange = (event) => {
     setConselho(event.target.value);
