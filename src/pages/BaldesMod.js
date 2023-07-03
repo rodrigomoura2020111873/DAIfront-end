@@ -128,7 +128,7 @@ const ModBaldes = () => {
       <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div className="navbar-nav ml-auto">
           {/* Link para a página de Recolhas */}
-          <Link to={`/recolhas/${baldeId}`} className="btn btn-primary" style={{ marginLeft: '10px', marginRight: '10px' }}>
+          <Link to={`/recolha/${baldeId}`} className="btn btn-primary" style={{ marginLeft: '10px', marginRight: '10px' }}>
             Recolhas
           </Link>
 

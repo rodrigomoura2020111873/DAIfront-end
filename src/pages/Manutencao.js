@@ -36,10 +36,10 @@ const handleRemover = async (manutencaoId, navigate) => {
     });
 
     if (response.ok) {
-      console.log('Funcionário removido com sucesso!');
+      console.log('Manutenção removida com sucesso!');
       navigate(-1);
     } else {
-      console.log('Erro ao remover o funcionário.');
+      console.log('Erro ao remover a manutenção.');
     }
   } catch (error) {
     console.log('Erro:', error);
@@ -59,17 +59,12 @@ const Manutencao = () => {
         const response = await fetch('http://localhost:8080/api/manutencao');
         const json = await response.json();
 
-        // Filtrar as manutenções com base no valor do parâmetro "manutencao.balde"
         const manutencoesFiltradas = json.data.manutencao.filter(manut => manut.balde === baldeId);
 
-        // Mapear as manutenções filtradas para buscar os detalhes dos funcionários com base no ID
         const manutencoes = await Promise.all(manutencoesFiltradas.map(async (manutencao) => {
-          // Fazer uma chamada à API para buscar os detalhes do funcionário com base no ID
           const responseFuncionario = await fetch(`http://localhost:8080/api/funcionario/${manutencao.funcionario}`);
           const jsonFuncionario = await responseFuncionario.json();
           const funcionarioNome = jsonFuncionario.data.funcionario.nome;
-
-          // Retornar o objeto da manutenção atualizado com o nome do funcionário
           return {
             ...manutencao,
             funcionarioNome,

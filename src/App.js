@@ -17,6 +17,7 @@ import Manutencao from "./pages/Manutencao"
 import AddManutencao from "./pages/ManutencaoAdd";
 import ModManutencao from "./pages/ManutencaoMod";
 import Recolha from "./pages/Recolha"
+import AddRecolha from "./pages/RecolhaAdd";
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -55,6 +56,7 @@ function App() {
             <Route path="/manutencao/:baldeId/add" element={<AddManutencao/>} />
             <Route path="/manutencao/:baldeId/:manutencaoId" element={<ModManutencao/>} />
             <Route path="/recolha/:baldeId" element={<Recolha/>} />
+            <Route path="/recolha/:baldeId/add" element={<AddRecolha/>} />
             <Route path="/mapa" element={<Mapa/>} />
           </Routes>
         </BrowserRouter>

@@ -21,11 +21,6 @@ const FormWrapper = styled.div`
   margin: 2% 5%;
 `;
 
-const DateWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  margin-bottom: 2%;
-`;
 
 const AddManutencao = () => {
   const { baldeId } = useParams();
