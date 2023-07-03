@@ -13,6 +13,11 @@ import Header from "./components/Header/Header";
 import AddBalde from "./pages/BaldesAdd";
 import ModBaldes from "./pages/BaldesMod";
 import Mapa from "./pages/Mapa"
+import Manutencao from "./pages/Manutencao"
+import AddManutencao from "./pages/ManutencaoAdd";
+import ModManutencao from "./pages/ManutencaoMod";
+import Recolha from "./pages/Recolha"
+import AddRecolha from "./pages/RecolhaAdd";
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -47,6 +52,11 @@ function App() {
             <Route path="/funcionarios" element={<Funcionarios />} />
             <Route path="/funcionarios/add" element={<AddFuncionarios />} />
             <Route path="/funcionarios/:funcionariosId" element={<ModFuncionario/>} />
+            <Route path="/manutencao/:baldeId" element={<Manutencao/>} />
+            <Route path="/manutencao/:baldeId/add" element={<AddManutencao/>} />
+            <Route path="/manutencao/:baldeId/:manutencaoId" element={<ModManutencao/>} />
+            <Route path="/recolha/:baldeId" element={<Recolha/>} />
+            <Route path="/recolha/:baldeId/add" element={<AddRecolha/>} />
             <Route path="/mapa" element={<Mapa/>} />
           </Routes>
         </BrowserRouter>

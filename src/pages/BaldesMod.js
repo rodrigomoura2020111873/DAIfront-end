@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, Link } from 'react-router-dom';
 import styled from 'styled-components';
 import MainNavBar from '../components/NavBar/MainNavBar';
 import GoBack from '../components/SecondNavBar/GoBack';
@@ -124,6 +124,21 @@ const ModBaldes = () => {
       <MainNavBar />
       <GoBack />
       <FormWrapper>
+      <nav className="navbar navbar-expand-lg navbar-light bg-light">
+      <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div className="navbar-nav ml-auto">
+          {/* Link para a página de Recolhas */}
+          <Link to={`/recolha/${baldeId}`} className="btn btn-primary" style={{ marginLeft: '10px', marginRight: '10px' }}>
+            Recolhas
+          </Link>
+
+          {/* Link para a página de Manutenções */}
+          <Link to={`/manutencao/${baldeId}`} className="btn btn-primary" style={{ marginLeft: '10px', marginRight: '10px' }}>
+            Manutenções
+          </Link>
+        </div>
+      </div>
+    </nav>
       <form onSubmit={handleSubmit}>
           <FormItem id="conselho" label="Conselho" placeholder="Insira o conselho do balde" handleOnChange={handleConselhoChange} value={conselho} />
           <FormItem id="freguesia" label="Freguesia" placeholder="Insira a freguesia do balde" handleOnChange={handleFreguesiaChange} value={freguesia} />
@@ -139,7 +154,9 @@ const ModBaldes = () => {
       />
           <SubmitButton>Modificar Balde</SubmitButton>
         </form>
+        
       </FormWrapper>
+      
     </>
   );
 };

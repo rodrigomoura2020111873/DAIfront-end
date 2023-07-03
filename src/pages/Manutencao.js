@@ -3,7 +3,7 @@ import { Link, useNavigate, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import MainNavBar from '../components/NavBar/MainNavBar';
 import GoBack from '../components/SecondNavBar/GoBack';
-import SecondNavRecolha from '../components/SecondNavBar/Recolha';
+import SecondNavManutencao from '../components/SecondNavBar/Manutencao';
 
 const ListWrapper = styled.div`
   display: flex;
@@ -29,24 +29,24 @@ const Title = styled.h3`
   flex-basis: 80%;
 `;
 
-const handleRemover = async (recolhaId, navigate) => {
+const handleRemover = async (manutencaoId, navigate) => {
   try {
-    const response = await fetch(`http://localhost:8080/api/recolha/${recolhaId}`, {
+    const response = await fetch(`http://localhost:8080/api/manutencao/${manutencaoId}`, {
       method: 'DELETE',
     });
 
     if (response.ok) {
-      console.log('Recolha removida com sucesso!');
+      console.log('Manutenção removida com sucesso!');
       navigate(-1);
     } else {
-      console.log('Erro ao remover a Recolha.');
+      console.log('Erro ao remover a manutenção.');
     }
   } catch (error) {
     console.log('Erro:', error);
   }
 };
 
-const Recolha = () => {
+const Manutencao = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [data, setData] = useState([]);
@@ -56,30 +56,25 @@ const Recolha = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('http://localhost:8080/api/recolha');
+        const response = await fetch('http://localhost:8080/api/manutencao');
         const json = await response.json();
 
-        const recolhasFiltradas = json.data.recolha.filter(rec => rec.balde === baldeId);
+        const manutencoesFiltradas = json.data.manutencao.filter(manut => manut.balde === baldeId);
 
-        const recolhas = await Promise.all(recolhasFiltradas.map(async (recolha) => {
-          const responseFuncionario = await fetch(`http://localhost:8080/api/funcionario/${recolha.funcionario}`);
+        const manutencoes = await Promise.all(manutencoesFiltradas.map(async (manutencao) => {
+          const responseFuncionario = await fetch(`http://localhost:8080/api/funcionario/${manutencao.funcionario}`);
           const jsonFuncionario = await responseFuncionario.json();
           const funcionarioNome = jsonFuncionario.data.funcionario.nome;
-          const responseCamiao = await fetch(`http://localhost:8080/api/camiao/${recolha.camiao}`);
-          const jsonCamiao = await responseCamiao.json();
-          const camiaoMatricula = jsonCamiao.data.camiao.matricula;
-
           return {
-            ...recolha,
+            ...manutencao,
             funcionarioNome,
-            camiaoMatricula
           };
         }));
 
-        setData(recolhas);
+        setData(manutencoes);
         setLoading(false);
 
-        console.log("Manutenções filtradas com nome do funcionário:", recolhas);
+        console.log("Manutenções filtradas com nome do funcionário:", manutencoes);
       } catch (error) {
         setError(error);
         setLoading(false);
@@ -93,20 +88,18 @@ const Recolha = () => {
     <>
       {navigate && <MainNavBar />}
       <GoBack/>
-      {navigate && <SecondNavRecolha />}
+      {navigate && <SecondNavManutencao />}
       <ListWrapper>
         {loading || error ? (
           <span>{error || 'Carregando...'}</span>
         ) : (
-          data.map((recolha) => (
-            <div key={recolha._id}>
-              <ListLink key={recolha._id} to={`${recolha._id}`}>
-                <Title>{recolha.funcionarioNome}</Title>
-                <Title>{recolha.camiaoMatricula}</Title>
-                <Title>{recolha.peso}</Title>
-                <Title>{recolha.data}</Title>
+          data.map((manutencao) => (
+            <div key={manutencao._id}>
+              <ListLink key={manutencao._id} to={`${manutencao._id}`}>
+                <Title>{manutencao.funcionarioNome}</Title>
+                <Title>{manutencao.data}</Title>
                 <Title>
-                  <button className='btn btn-danger' onClick={() => handleRemover(recolha._id, navigate)}>Remover</button>
+                  <button className='btn btn-danger' onClick={() => handleRemover(manutencao._id, navigate)}>Remover</button>
                 </Title>
               </ListLink>
             </div>
@@ -117,4 +110,4 @@ const Recolha = () => {
   );
 };
 
-export default Recolha;
+export default Manutencao;
