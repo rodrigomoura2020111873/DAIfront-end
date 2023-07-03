@@ -10,10 +10,10 @@ const MainNavBar = () => {
   </button>
   <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div className="navbar-nav">
-      <a className="nav-item nav-link" href="/">Home</a>
-      <a className="nav-item nav-link" href="#">Mapa</a>
+      <a className="nav-item nav-link" href="/">Baldes</a>
+      <a className="nav-item nav-link" href="/mapa">Mapa</a>
       <a className="nav-item nav-link" href="/funcionarios">Funcionários</a>
-      <a className="nav-item nav-link" href="/camioes">Camioes</a>
+      <a className="nav-item nav-link" href="/camioes">Camiões</a>
     </div>
   </div>
 </nav>

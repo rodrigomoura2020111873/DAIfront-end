@@ -106,7 +106,7 @@ const AddBalde = () => {
       <GoBack />
       <FormWrapper>
         <form onSubmit={handleSubmit}>
-          <FormItem id="conselho" label="Conselho" placeholder="Insira o conselho do balde" handleOnChange={handleConselhoChange} value={conselho} />
+          <FormItem id="concelho" label="Concelho" placeholder="Insira o concelho do balde" handleOnChange={handleConselhoChange} value={conselho} />
           <FormItem id="freguesia" label="Freguesia" placeholder="Insira a freguesia do balde" handleOnChange={handleFreguesiaChange} value={freguesia} />
           <FormItem id="rua" label="Rua" placeholder="Insira rua do balde" handleOnChange={handleRuaChange} value={rua} />
           <FormItem type="number" step="0.0001" id="coordenadaX" label="Coordenada X" placeholder="Localização x" handleOnChange={handleCoordenadaXChange} value={coordenadaX} />
