@@ -20,7 +20,7 @@ const FormWrapper = styled.div`
   margin: 2% 5%;
 `;
 
-const ModFuncionario = () => {
+const ModManutencao = () => {
   const { manutencaoId } = useParams();
   const [balde, setBalde] = useState('');
   const [funcionario, setFuncionario] = useState('');
@@ -156,4 +156,4 @@ const ModFuncionario = () => {
   );
 };
 
-export default ModFuncionario;
+export default ModManutencao;

@@ -48,11 +48,13 @@ const AddBalde = () => {
     setTipo(event.target.value);
   };
   const handleCoordenadaXChange = (event) => {
-    setCoordenadaX(event.target.value);
+    const coordenadaXValue = parseFloat(event.target.value);
+    setCoordenadaX(coordenadaXValue);
   };
   
   const handleCoordenadaYChange = (event) => {
-    setCoordenadaY(event.target.value);
+    const coordenadaYValue = parseFloat(event.target.value);
+    setCoordenadaY(coordenadaYValue);
   };
   
 

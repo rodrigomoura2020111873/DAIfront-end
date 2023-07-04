@@ -27,6 +27,7 @@ const Mapa = () => {
         const json = await response.json();
         setData(json.data.baldes);
         setLoading(false);
+        console.log(json.data.baldes)
       } catch (error) {
         setError(error);
         setLoading(false);
@@ -125,7 +126,7 @@ const Mapa = () => {
                 >
                   Gerar Rota de Recolha
                 </button>
-                <Link to={`/manutencao/${selectedMarker._id}`}>
+                <Link to={`/manutencao/${selectedMarker._id}/add`}>
                   <button
                     style={{
                       backgroundColor: 'green',
@@ -139,7 +140,7 @@ const Mapa = () => {
                     Manutenção
                   </button>
                 </Link>
-                <Link to={`/recolha/${selectedMarker._id}`}>
+                <Link to={`/recolha/${selectedMarker._id}/add`}>
                   <button
                     style={{
                       backgroundColor: 'green',
