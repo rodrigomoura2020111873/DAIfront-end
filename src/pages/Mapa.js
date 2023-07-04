@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { GoogleMap, LoadScript, Marker, InfoWindow } from '@react-google-maps/api';
+import { GoogleMap, LoadScript, Marker, InfoWindow} from '@react-google-maps/api';
 import MainNavBar from '../components/NavBar/MainNavBar';
-
+import { Link } from 'react-router-dom';
 
 const containerStyle = {
   height: '800px',
@@ -67,10 +67,17 @@ const Mapa = () => {
             <p>Latitude: {selectedMarker.localizacao[0]} Longitude: {selectedMarker.localizacao[1]}</p>
             <p>Tipo: {selectedMarker.tipo}</p>
             <p>Capacidade: {selectedMarker.percentagem_lixo} % </p>
+            <Link to="/recolha/:baldeID">
+            <button>Recolha</button>
+            </Link>
+            <Link to="/manutencao/:baldeID">
+            <button>Manutenção</button>
+            </Link>
           </div>
+        
         </InfoWindow>
       )}
-        </GoogleMap>
+    </GoogleMap>
     </LoadScript>
     </>
   );
