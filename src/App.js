@@ -55,7 +55,7 @@ function App() {
             <Route path="/manutencao/:baldeId" element={<Manutencao/>} />
             <Route path="/manutencao/:baldeId/add" element={<AddManutencao/>} />
             <Route path="/manutencao/:baldeId/:manutencaoId" element={<ModManutencao/>} />
-            <Route path="/recolha/:baldeId" element={<Recolha/>} />
+            <Route path="/recolha/:baldeId" element={<Recolha />} />
             <Route path="/recolha/:baldeId/add" element={<AddRecolha/>} />
             <Route path="/mapa" element={<Mapa/>} />
           </Routes>
