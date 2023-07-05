@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { GoogleMap, LoadScript, Marker, InfoWindow, DirectionsService, DirectionsRenderer } from '@react-google-maps/api';
 import MainNavBar from '../components/NavBar/MainNavBar';
 import { Link } from 'react-router-dom';
+import iconeBalde from '../components/iconeBalde.png'
 
 const containerStyle = {
   height: '800px',
@@ -99,6 +100,12 @@ const Mapa = () => {
               key={balde.id}
               position={{ lat: balde.localizacao[0], lng: balde.localizacao[1] }}
               onClick={() => handleMarkerClick(balde)}
+              icon={{
+                url: iconeBalde, 
+                scaledSize: new window.google.maps.Size(40, 40), 
+                origin: new window.google.maps.Point(0, 0), 
+                anchor: new window.google.maps.Point(30, 40) 
+              }}
             />
           ))}
 

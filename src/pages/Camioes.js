@@ -2,13 +2,16 @@ import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import MainNavBar from '../components/NavBar/MainNavBar';
-import SecondNavCamioes from '../components/SecondNavBar/Camioes';
+import SecondNavBaldes from '../components/SecondNavBar/Camioes';
 
 const ListWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   flex-direction: column;
   margin: 5%;
+  background-color: #f2f2f2;
+  padding: 20px;
+  border-radius: 10px;
 `;
 
 const ListLink = styled(Link)`
@@ -26,6 +29,27 @@ const ListLink = styled(Link)`
 
 const Title = styled.h3`
   flex-basis: 80%;
+`;
+
+const Table = styled.table`
+  width: 100%;
+  border-collapse: collapse;
+`;
+
+const TableHeader = styled.th`
+  padding: 10px;
+  text-align: left;
+`;
+
+const TableRow = styled.tr`
+  &:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+`;
+
+const TableCell = styled.td`
+  padding: 10px;
+  text-align: left;
 `;
 
 const Camioes = () => {
@@ -50,7 +74,7 @@ const Camioes = () => {
     }
   };
 
-  let navigate = useNavigate();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -71,23 +95,43 @@ const Camioes = () => {
   return (
     <>
       {navigate && <MainNavBar />}
-      {navigate && <SecondNavCamioes />}
+      <SecondNavBaldes />
       <ListWrapper>
-        {loading || error ? (
-          <span>{error || 'Carregando...'}</span>
-        ) : (
-          data.map((camiao) => (
-            <ListLink key={camiao._id} to={`${camiao._id}`}>
-              <Title>{camiao.matricula}</Title>
-              <Title>{camiao.marca}</Title>
-              <Title>{camiao.modelo}</Title>
-              <Title>
-                <button className='btn btn-danger' onClick={() => handleRemover(camiao._id, navigate)}>Remover</button>
-              </Title>
-            </ListLink>
-          ))
-        )}
-      </ListWrapper>
+    {loading || error ? (
+      <span>{error || 'Carregando...'}</span>
+    ) : (
+      <Table>
+        <thead>
+          <TableRow>
+            <TableHeader>Matrícula</TableHeader>
+            <TableHeader>Marca</TableHeader>
+            <TableHeader>Modelo</TableHeader>
+            <TableHeader>Ações</TableHeader>
+          </TableRow>
+        </thead>
+        <tbody>
+          {data.map((camiao) => (
+            <TableRow key={camiao._id} to >
+              <TableCell>{camiao.matricula}</TableCell>
+              <TableCell>{camiao.marca}</TableCell>
+              <TableCell>{camiao.modelo}</TableCell>
+              <TableCell>
+                <button className='btn btn-warning' style= {{ marginRight: '5px'}} onClick={() => navigate(`/camioes/${camiao._id}`)}>
+                  Modificar
+                </button> 
+
+                <button className='btn btn-danger' onClick={() => handleRemover(camiao._id, navigate)}>
+                  Remover
+                </button>
+                
+              </TableCell>
+            </TableRow>
+          ))}
+        </tbody>
+      </Table>
+    )}
+  </ListWrapper>
+
     </>
   );
 };

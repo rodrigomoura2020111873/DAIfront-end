@@ -9,7 +9,7 @@ import Button from "../components/Button/Button";
 
 
 const SubmitButton = styled(Button)`
-  background: blue;
+  background: #00cc66;
   margin: 2% 0;
 `;
 
@@ -22,15 +22,15 @@ const FormWrapper = styled.div`
 
 const ModBaldes = () => {
     const { baldeId } = useParams();
-    const [conselho, setConselho] = useState('');
+    const [concelho, setConcelho] = useState('');
     const [freguesia, setFreguesia] = useState('');
     const [rua, setRua] = useState('');
     const [coordenadaX, setCoordenadaX] = useState('');
     const [coordenadaY, setCoordenadaY] = useState('');
     const [tipo, setTipo] = useState('');
 
-    const handleConselhoChange = (event) => {
-        setConselho(event.target.value);
+    const handleConcelhoChange = (event) => {
+        setConcelho(event.target.value);
       };
     
       const handleFreguesiaChange = (event) => {
@@ -60,7 +60,7 @@ const ModBaldes = () => {
         event.preventDefault();
 
     const BaldeAtualizado = {
-        conselho,
+        concelho,
         freguesia,
         rua,
         localizacao: [parseFloat(coordenadaX), parseFloat(coordenadaY)],
@@ -96,8 +96,8 @@ const ModBaldes = () => {
       try {
         const response = await fetch(`http://localhost:8080/api/balde/${baldeId}`);
         const json = await response.json();
-        const { conselho, freguesia, rua, localizacao, tipo } = json.data.balde;
-        setConselho(conselho);
+        const { concelho, freguesia, rua, localizacao, tipo } = json.data.balde;
+        setConcelho(concelho);
         setFreguesia(freguesia);
         setRua(rua);
         setCoordenadaX(localizacao[0].toString());
@@ -140,7 +140,7 @@ const ModBaldes = () => {
       </div>
     </nav>
       <form onSubmit={handleSubmit}>
-          <FormItem id="conselho" label="Conselho" placeholder="Insira o conselho do balde" handleOnChange={handleConselhoChange} value={conselho} />
+          <FormItem id="concelho" label="Concelho" placeholder="Insira o concelho do balde" handleOnChange={handleConcelhoChange} value={concelho} />
           <FormItem id="freguesia" label="Freguesia" placeholder="Insira a freguesia do balde" handleOnChange={handleFreguesiaChange} value={freguesia} />
           <FormItem id="rua" label="Rua" placeholder="Insira rua do balde" handleOnChange={handleRuaChange} value={rua} />
           <FormItem type="number" step="0.0001" id="coordenadaX" label="Coordenada X" placeholder="Localização x" handleOnChange={handleCoordenadaXChange} value={coordenadaX} />

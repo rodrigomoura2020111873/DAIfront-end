@@ -9,7 +9,7 @@ import GoBack from '../components/SecondNavBar/GoBack';
 
 
 const SubmitButton = styled(Button)`
-  background: blue;
+  background: #00cc66;
   margin: 2% 0;
 `;
 

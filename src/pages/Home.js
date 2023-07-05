@@ -9,23 +9,30 @@ const ListWrapper = styled.div`
   justify-content: space-between;
   flex-direction: column;
   margin: 5%;
+  background-color: #f2f2f2;
+  padding: 20px;
+  border-radius: 10px;
 `;
 
-const ListLink = styled(Link)`
-  display: flex;
-  text-align: left;
-  align-items: center;
-  padding: 1%;
-  background: lightGray;
-  border-radius: 5px;
+const Table = styled.table`
+  width: 100%;
+  border-collapse: collapse;
+`;
+
+const TableHeader = styled.th`
   padding: 10px;
-  margin-bottom: 2%;
-  color: black;
-  text-decoration: none;
+  text-align: left;
 `;
 
-const Title = styled.h3`
-  flex-basis: 80%;
+const TableRow = styled.tr`
+  &:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+`;
+
+const TableCell = styled.td`
+  padding: 10px;
+  text-align: left;
 `;
 
 const Home = () => {
@@ -38,7 +45,7 @@ const Home = () => {
       const response = await fetch(`http://localhost:8080/api/balde/${baldeId}`, {
         method: 'DELETE',
       });
-  
+
       if (response.ok) {
         console.log('Balde removido com sucesso!');
         navigate('/');
@@ -71,23 +78,43 @@ const Home = () => {
   return (
     <>
       {navigate && <MainNavBar />}
-      < SecondNavBaldes />
+      <SecondNavBaldes />
       <ListWrapper>
         {loading || error ? (
           <span>{error || 'Carregando...'}</span>
         ) : (
-          data.map((list) => (
-            <ListLink key={list._id} to={`/baldes/${list._id}`}>
-              <Title>{list.concelho}</Title>
-              <Title>{list.freguesia}</Title> 
-              <Title>{list.rua}</Title>
-              <Title>{list.tipo}</Title>
-              <Title>{list.percentagem_lixo}</Title>
-              <Title>
-                <button className='btn btn-danger' onClick={() => handleRemover(list._id, navigate)}>Remover</button>
-              </Title>
-            </ListLink>
-          ))
+          <Table>
+            <thead>
+              <TableRow>
+                <TableHeader>Concelho</TableHeader>
+                <TableHeader>Freguesia</TableHeader>
+                <TableHeader>Morada</TableHeader>
+                <TableHeader>Tipo</TableHeader>
+                <TableHeader>Capacidade (%)</TableHeader>
+                <TableHeader>Ações</TableHeader>
+              </TableRow>
+            </thead>
+            <tbody>
+              {data.map((list) => (
+                <TableRow key={list._id}>
+                  <TableCell>{list.concelho}</TableCell>
+                  <TableCell>{list.freguesia}</TableCell>
+                  <TableCell>{list.rua}</TableCell>
+                  <TableCell>{list.tipo}</TableCell>
+                  <TableCell>{list.percentagem_lixo}</TableCell>
+                  <TableCell>
+                  <button className='btn btn-warning' style= {{ marginRight: '5px'}} onClick={() => navigate(`/baldes/${list._id}`)}>
+                  Modificar
+                  </button>
+
+                    <button className='btn btn-danger' onClick={() => handleRemover(list._id, navigate)}>
+                      Remover
+                    </button>
+                  </TableCell>
+                </TableRow>
+              ))}
+            </tbody>
+          </Table>
         )}
       </ListWrapper>
     </>

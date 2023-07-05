@@ -2,32 +2,38 @@ import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import MainNavBar from '../components/NavBar/MainNavBar';
-import SecondNavFuncionarios from '../components/SecondNavBar/Funcionarios';
+import SecondNavBaldes from '../components/SecondNavBar/Funcionarios';
 
 const ListWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   flex-direction: column;
   margin: 5%;
+  background-color: #f2f2f2;
+  padding: 20px;
+  border-radius: 10px;
 `;
 
-const ListLink = styled(Link)`
-  display: flex;
-  text-align: left;
-  align-items: center;
-  padding: 1%;
-  background: lightGray;
-  border-radius: 5px;
+const Table = styled.table`
+  width: 100%;
+  border-collapse: collapse;
+`;
+
+const TableHeader = styled.th`
   padding: 10px;
-  margin-bottom: 2%;
-  color: black;
-  text-decoration: none;
+  text-align: left;
 `;
 
-const Title = styled.h3`
-  flex-basis: 80%;
+const TableRow = styled.tr`
+  &:nth-child(even) {
+    background-color: #f9f9f9;
+  }
 `;
 
+const TableCell = styled.td`
+  padding: 10px;
+  text-align: left;
+`;
 
 const handleRemover = async (funcionarioId, navigate) => {
   try {
@@ -45,8 +51,6 @@ const handleRemover = async (funcionarioId, navigate) => {
     console.log('Erro:', error);
   }
 };
-
-
 
 const Funcionarios = () => {
   const [loading, setLoading] = useState(true);
@@ -74,22 +78,37 @@ const Funcionarios = () => {
   return (
     <>
       {navigate && <MainNavBar />}
-      {navigate && <SecondNavFuncionarios />}
+      <SecondNavBaldes />
       <ListWrapper>
         {loading || error ? (
           <span>{error || 'Carregando...'}</span>
         ) : (
-          data.map((funcionario) => (
-            <div key={funcionario._id}>
-            <ListLink key={funcionario._id} to={`${funcionario._id}`}>
-              <Title>{funcionario.nome}</Title>
-              <Title>{funcionario.funcao}</Title>
-              <Title>
-                <button className='btn btn-danger' onClick={() => handleRemover(funcionario._id, navigate)}>Remover</button>
-              </Title>
-            </ListLink>
-</div>
-          ))
+          <Table>
+            <thead>
+              <TableRow>
+                <TableHeader>Nome</TableHeader>
+                <TableHeader>Função</TableHeader>
+                <TableHeader>Ações</TableHeader>
+              </TableRow>
+            </thead>
+            <tbody>
+              {data.map((funcionario) => (
+                <TableRow key={funcionario._id}>
+                  <TableCell>{funcionario.nome}</TableCell>
+                  <TableCell>{funcionario.funcao}</TableCell>
+                  <TableCell>
+                    <button className='btn btn-warning' style= {{ marginRight: '5px'}} onClick={() => navigate(`/funcionarios/${funcionario._id}`)}>
+                      Modificar
+                    </button> 
+
+                    <button className='btn btn-danger' onClick={() => handleRemover(funcionario._id, navigate)}>
+                      Remover
+                    </button>
+                  </TableCell>
+                </TableRow>
+              ))}
+            </tbody>
+          </Table>
         )}
       </ListWrapper>
     </>

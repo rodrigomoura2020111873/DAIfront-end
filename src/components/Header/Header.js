@@ -1,24 +1,25 @@
 import styled from 'styled-components';
 
 const HeaderWrapper = styled.div`
-  background-color: green;
+  background-color: #00994d; 
   height: 80px;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  font-size: 20px; 
+  color: #fff; 
 `;
 
 const Title = styled.h1`
   pointer-events: none;
+  font-weight: bold; 
+  margin: 0; 
 `;
 
 function Header() {
   return (
     <HeaderWrapper>
-      <Title>Rede de Recolha de Residuos</Title>
+      <Title>Rede de Recolha de Resíduos</Title>
     </HeaderWrapper>
   );
 }

@@ -8,7 +8,7 @@ import Button from "../components/Button/Button";
 
 
 const SubmitButton = styled(Button)`
-  background: blue;
+  background: #00cc66;
   margin: 2% 0;
 `;
 

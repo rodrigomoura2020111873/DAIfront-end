@@ -4,13 +4,13 @@ const Button = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  background: orange;
-  color: white;
+  background: #fff;
+  color: #fff;
   padding: 10px;
   line-height: 2;
   border-radius: 5px;
   border: 0;
-  font-size: inherit;
+  font-size: bold;
   cursor: pointer;
 `;
 

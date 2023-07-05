@@ -21,7 +21,7 @@ const SecondNavRecolha = () => {
         <div className="navbar-nav ml-auto">
           <a
             href={`/recolha/${baldeId}/add`}
-            className="btn btn-primary"
+            className="btn btn-success"
             style={{ marginLeft: '10px', marginRight: '10px' }}
           >
             Adicionar Recolha

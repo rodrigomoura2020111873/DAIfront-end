@@ -10,7 +10,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 import DataFormItem from "../components/FormItem/DataFormItem";
 
 const SubmitButton = styled(Button)`
-  background: blue;
+  background: #00cc66;
   margin: 2% 0;
 `;
 

@@ -9,7 +9,7 @@ import Button from "../components/Button/Button";
 
 
 const SubmitButton = styled(Button)`
-  background: blue;
+  background: #00cc66;
   margin: 2% 0;
 `;
 
@@ -23,7 +23,7 @@ const FormWrapper = styled.div`
 
 
 const AddBalde = () => {
-  const [concelho, setConselho] = useState('');
+  const [concelho, setConcelho] = useState('');
   const [freguesia, setFreguesia] = useState('');
   const [rua, setRua] = useState('');
   const [coordenadaX, setCoordenadaX] = useState('');
@@ -31,8 +31,8 @@ const AddBalde = () => {
   const [tipo, setTipo] = useState('');
   const [percentagem_lixo] = useState(0);
 
-  const handleConselhoChange = (event) => {
-    setConselho(event.target.value);
+  const handleConcelhoChange = (event) => {
+    setConcelho(event.target.value);
   };
 
   const handleFreguesiaChange = (event) => {
@@ -107,7 +107,7 @@ const AddBalde = () => {
       <GoBack />
       <FormWrapper>
         <form onSubmit={handleSubmit}>
-          <FormItem id="concelho" label="Concelho" placeholder="Insira o concelho do balde" handleOnChange={handleConselhoChange} value={concelho} />
+          <FormItem id="concelho" label="Concelho" placeholder="Insira o concelho do balde" handleOnChange={handleConcelhoChange} value={concelho} />
           <FormItem id="freguesia" label="Freguesia" placeholder="Insira a freguesia do balde" handleOnChange={handleFreguesiaChange} value={freguesia} />
           <FormItem id="rua" label="Rua" placeholder="Insira rua do balde" handleOnChange={handleRuaChange} value={rua} />
           <FormItem type="number" step="0.0001" id="coordenadaX" label="Coordenada X" placeholder="Localização x" handleOnChange={handleCoordenadaXChange} value={coordenadaX} />

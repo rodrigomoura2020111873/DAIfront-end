@@ -21,7 +21,7 @@ const SecondNavManutencao = () => {
         <div className="navbar-nav ml-auto">
           <a
             href={`/manutencao/${baldeId}/add`}
-            className="btn btn-primary"
+            className="btn btn-success"
             style={{ marginLeft: '10px', marginRight: '10px' }}
           >
             Adicionar Manutenção
