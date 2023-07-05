@@ -29,6 +29,27 @@ const Title = styled.h3`
   flex-basis: 80%;
 `;
 
+const Table = styled.table`
+  width: 100%;
+  border-collapse: collapse;
+`;
+
+const TableHeader = styled.th`
+  padding: 10px;
+  text-align: left;
+`;
+
+const TableRow = styled.tr`
+  &:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+`;
+
+const TableCell = styled.td`
+  padding: 10px;
+  text-align: left;
+`;
+
 const handleRemover = async (recolhaId, navigate) => {
   try {
     const response = await fetch(`http://localhost:8080/api/recolha/${recolhaId}`, {
@@ -98,21 +119,38 @@ const Recolha = () => {
         {loading || error ? (
           <span>{error || 'Carregando...'}</span>
         ) : (
-          data.map((recolha) => (
-            <div key={recolha._id}>
-              <ListLink key={recolha._id} to={`${recolha._id}`}>
-                <Title>{recolha.funcionarioNome}</Title>
-                <Title>{recolha.camiaoMatricula}</Title>
-                <Title>{recolha.peso}</Title>
-                <Title>{recolha.data}</Title>
-                <Title>
-                  <button className='btn btn-danger' onClick={() => handleRemover(recolha._id, navigate)}>Remover</button>
-                </Title>
-              </ListLink>
-            </div>
-          ))
-        )}
-      </ListWrapper>
+    <Table>
+      <thead>
+        <TableRow>
+          <TableHeader>Nome</TableHeader>
+          <TableHeader>Matrícula do Camião</TableHeader>
+          <TableHeader>Peso</TableHeader>
+          <TableHeader>Data</TableHeader>
+          <TableHeader>Ações</TableHeader>
+        </TableRow>
+      </thead>
+      <tbody>
+        {data.map((recolha) => (
+          <TableRow key={recolha._id}>
+            <TableCell>{recolha.funcionarioNome}</TableCell>
+            <TableCell>{recolha.camiaoMatricula}</TableCell>
+            <TableCell>{recolha.peso}</TableCell>
+            <TableCell>{recolha.data}</TableCell>
+            <TableCell>
+              <button className='btn btn-warning' style= {{ marginRight: '5px'}} onClick={() => navigate(`/recolha/${recolha._id}/${recolha._id}`)}>
+                  Modificar
+              </button>
+              <button className='btn btn-danger' onClick={() => handleRemover(recolha._id, navigate)}>
+                Remover
+              </button>
+            </TableCell>
+          </TableRow>
+        ))}
+      </tbody>
+    </Table>
+  )}
+</ListWrapper>
+
     </>
   );
 };

@@ -29,6 +29,27 @@ const Title = styled.h3`
   flex-basis: 80%;
 `;
 
+const Table = styled.table`
+  width: 100%;
+  border-collapse: collapse;
+`;
+
+const TableHeader = styled.th`
+  padding: 10px;
+  text-align: left;
+`;
+
+const TableRow = styled.tr`
+  &:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+`;
+
+const TableCell = styled.td`
+  padding: 10px;
+  text-align: left;
+`;
+
 const handleRemover = async (manutencaoId, navigate) => {
   try {
     const response = await fetch(`http://localhost:8080/api/manutencao/${manutencaoId}`, {
@@ -93,17 +114,34 @@ const Manutencao = () => {
         {loading || error ? (
           <span>{error || 'Carregando...'}</span>
         ) : (
-          data.map((manutencao) => (
-            <div key={manutencao._id}>
-              <ListLink key={manutencao._id} to={`${manutencao._id}`}>
-                <Title>{manutencao.funcionarioNome}</Title>
-                <Title>{manutencao.data}</Title>
-                <Title>
-                  <button className='btn btn-danger' onClick={() => handleRemover(manutencao._id, navigate)}>Remover</button>
-                </Title>
-              </ListLink>
-            </div>
-          ))
+          <Table>
+            <thead>
+              <TableRow>
+                <TableHeader>Funcionário</TableHeader>
+                <TableHeader>Data</TableHeader>
+                <TableHeader>Descrição</TableHeader>
+                <TableHeader>Ações</TableHeader>
+              </TableRow>
+            </thead>
+            <tbody>
+              {data.map((manutencao) => (
+                <TableRow key={manutencao._id}>
+                  <TableCell>{manutencao.funcionarioNome}</TableCell>
+                  <TableCell>{manutencao.data}</TableCell>
+                  <TableCell>{manutencao.descricao}</TableCell>
+                  <TableCell>
+                  <button className='btn btn-warning' style= {{ marginRight: '5px'}} onClick={() => navigate(`/manutencao/${manutencao._id}/${manutencao._id}`)}>
+                  Modificar
+              </button>
+
+                    <button className='btn btn-danger' onClick={() => handleRemover(manutencao._id, navigate)}>
+                      Remover
+                    </button>
+                  </TableCell>
+                </TableRow>
+              ))}
+            </tbody>
+          </Table>
         )}
       </ListWrapper>
     </>

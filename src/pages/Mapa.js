@@ -115,8 +115,9 @@ const Mapa = () => {
               onCloseClick={handleCloseInfoWindow}
             >
               <div>
-                <h6>{selectedMarker.conselho}</h6>
-                <h6>{selectedMarker.freguesia}</h6>
+               <h6>{selectedMarker.rua}</h6>
+                <h6>Concelho: {selectedMarker.concelho}</h6>
+                <h6>Freguesia: {selectedMarker.freguesia}</h6> 
                 <p>Latitude: {selectedMarker.localizacao[0]} Longitude: {selectedMarker.localizacao[1]}</p>
                 <p>Tipo: {selectedMarker.tipo}</p>
                 <p>Capacidade: {selectedMarker.percentagem_lixo}%</p>

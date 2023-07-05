@@ -9,7 +9,7 @@ const GoBack = () => {
   };
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+    <nav className="navbar navbar-expand-lg navbar-light">
       <button
         className="navbar-toggler"
         type="button"
@@ -21,7 +21,7 @@ const GoBack = () => {
       >
         <span className="navbar-toggler-icon"></span>
       </button>
-      <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div className="collapse navbar-collapse " id="navbarNavAltMarkup">
         <div className="navbar-nav ml-auto">
           <button
             className="btn btn-danger"

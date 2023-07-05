@@ -103,8 +103,8 @@ const Home = () => {
                   <TableCell>{list.tipo}</TableCell>
                   <TableCell>{list.percentagem_lixo}</TableCell>
                   <TableCell>
-                  <button className='btn btn-warning' style= {{ marginRight: '5px'}} onClick={() => navigate(`/baldes/${list._id}`)}>
-                  Modificar
+                  <button className='btn btn-secondary' style= {{ marginRight: '5px'}} onClick={() => navigate(`/baldes/${list._id}`)}>
+                  Informações
                   </button>
 
                     <button className='btn btn-danger' onClick={() => handleRemover(list._id, navigate)}>
