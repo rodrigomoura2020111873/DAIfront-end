@@ -163,7 +163,7 @@ const ModRecolha = () => {
 
             <FormSelectItem
             id="camiao"
-            label="CAmião"
+            label="Camião"
             placeholder="Selecione um Camião"
             value={camiao}
             options={camioes.map((camiao) => ({
