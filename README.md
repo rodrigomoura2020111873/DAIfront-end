@@ -5,7 +5,6 @@ Este projeto consiste no desenvolvimento de uma aplicação Web para ajuda na ge
 ## Grupo
 
 Filipe Resendes
-Francisco Cruz
 Pedro Botelho
 Rodrigo Moura
 
