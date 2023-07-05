@@ -24,7 +24,7 @@ const GoBack = () => {
       <div className="collapse navbar-collapse " id="navbarNavAltMarkup">
         <div className="navbar-nav ml-auto">
           <button
-            className="btn btn-danger"
+            className="btn btn-outline-danger"
             style={{ marginLeft: '10px', marginRight: '10px' }}
             onClick={handleVoltar}
           >

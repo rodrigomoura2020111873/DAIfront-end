@@ -124,16 +124,16 @@ const ModBaldes = () => {
       <MainNavBar />
       <GoBack />
       <FormWrapper>
-      <nav className="navbar navbar-expand-lg navbar-light bg-light">
+      <nav className="navbar navbar-expand-lg navbar-light">
       <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div className="navbar-nav ml-auto">
           {/* Link para a página de Recolhas */}
-          <Link to={`/recolha/${baldeId}`} className="btn btn-primary" style={{ marginLeft: '10px', marginRight: '10px' }}>
+          <Link to={`/recolha/${baldeId}`} className="btn btn-success" style={{marginRight: '10px' }}>
             Recolhas
           </Link>
 
           {/* Link para a página de Manutenções */}
-          <Link to={`/manutencao/${baldeId}`} className="btn btn-primary" style={{ marginLeft: '10px', marginRight: '10px' }}>
+          <Link to={`/manutencao/${baldeId}`} className="btn btn-success" style={{ marginLeft: '10px', marginRight: '10px' }}>
             Manutenções
           </Link>
         </div>
