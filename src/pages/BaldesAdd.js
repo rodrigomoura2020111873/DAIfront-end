@@ -23,7 +23,7 @@ const FormWrapper = styled.div`
 
 
 const AddBalde = () => {
-  const [conselho, setConselho] = useState('');
+  const [concelho, setConselho] = useState('');
   const [freguesia, setFreguesia] = useState('');
   const [rua, setRua] = useState('');
   const [coordenadaX, setCoordenadaX] = useState('');
@@ -62,14 +62,13 @@ const AddBalde = () => {
     event.preventDefault();
   
       const novoBalde = {
-        conselho,
+        concelho,
         freguesia,
         rua,
         localizacao: [coordenadaX, coordenadaY],
         tipo,
         percentagem_lixo
       };
-
 
       console.log('JSON enviado:', JSON.stringify(novoBalde));
   
@@ -80,7 +79,7 @@ const AddBalde = () => {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify(novoBalde),
-        });
+        }); 
   
         if (response.ok) {
           console.log('Balde criado com sucesso!');
@@ -108,7 +107,7 @@ const AddBalde = () => {
       <GoBack />
       <FormWrapper>
         <form onSubmit={handleSubmit}>
-          <FormItem id="concelho" label="Concelho" placeholder="Insira o concelho do balde" handleOnChange={handleConselhoChange} value={conselho} />
+          <FormItem id="concelho" label="Concelho" placeholder="Insira o concelho do balde" handleOnChange={handleConselhoChange} value={concelho} />
           <FormItem id="freguesia" label="Freguesia" placeholder="Insira a freguesia do balde" handleOnChange={handleFreguesiaChange} value={freguesia} />
           <FormItem id="rua" label="Rua" placeholder="Insira rua do balde" handleOnChange={handleRuaChange} value={rua} />
           <FormItem type="number" step="0.0001" id="coordenadaX" label="Coordenada X" placeholder="Localização x" handleOnChange={handleCoordenadaXChange} value={coordenadaX} />

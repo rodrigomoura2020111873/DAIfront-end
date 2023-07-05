@@ -189,7 +189,7 @@ const ModRecolha = () => {
             value={peso}
           />
 
-          <SubmitButton>Modificar Manutenção</SubmitButton>
+          <SubmitButton>Modificar Recolha</SubmitButton>
         </form>
       </FormWrapper>
     </>

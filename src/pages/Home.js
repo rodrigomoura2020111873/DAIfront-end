@@ -78,7 +78,7 @@ const Home = () => {
         ) : (
           data.map((list) => (
             <ListLink key={list._id} to={`/baldes/${list._id}`}>
-              <Title>{list.conselho}</Title>
+              <Title>{list.concelho}</Title>
               <Title>{list.freguesia}</Title> 
               <Title>{list.rua}</Title>
               <Title>{list.tipo}</Title>
